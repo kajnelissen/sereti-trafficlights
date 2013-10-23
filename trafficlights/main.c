@@ -8,11 +8,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Crossing crossing;
-
 /*
  * 
  */
 int main(int argc, char** argv) {
+    Crossing* crossing;
+    create_crossing(crossing);
+    
+    
+    
     return (EXIT_SUCCESS);
 }
