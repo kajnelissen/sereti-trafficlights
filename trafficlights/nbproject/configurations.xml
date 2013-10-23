@@ -4,6 +4,16 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>CarSensor.h</itemPath>
+      <itemPath>Crossing.h</itemPath>
+      <itemPath>Crosswalk.h</itemPath>
+      <itemPath>Lane.h</itemPath>
+      <itemPath>Light.h</itemPath>
+      <itemPath>PedestrianLight.h</itemPath>
+      <itemPath>PushButton.h</itemPath>
+      <itemPath>Road.h</itemPath>
+      <itemPath>STD.h</itemPath>
+      <itemPath>TrafficLight.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +22,14 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Carsensor.c</itemPath>
+      <itemPath>Crossing.c</itemPath>
+      <itemPath>Crosswalk.c</itemPath>
+      <itemPath>Lane.c</itemPath>
+      <itemPath>PedestrianLight.c</itemPath>
+      <itemPath>PushButton.c</itemPath>
+      <itemPath>Road.c</itemPath>
+      <itemPath>TrafficLight.c</itemPath>
       <itemPath>main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -37,6 +55,42 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="CarSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Carsensor.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Crossing.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Crossing.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Crosswalk.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Crosswalk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Lane.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Lane.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Light.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PedestrianLight.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="PedestrianLight.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PushButton.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="PushButton.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Road.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Road.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="STD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TrafficLight.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="TrafficLight.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
@@ -61,6 +115,42 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="CarSensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Carsensor.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Crossing.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Crossing.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Crosswalk.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Crosswalk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Lane.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Lane.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Light.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PedestrianLight.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="PedestrianLight.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PushButton.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="PushButton.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Road.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Road.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="STD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TrafficLight.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="TrafficLight.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>

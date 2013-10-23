@@ -35,6 +35,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Carsensor.o \
+	${OBJECTDIR}/Crossing.o \
+	${OBJECTDIR}/Crosswalk.o \
+	${OBJECTDIR}/Lane.o \
+	${OBJECTDIR}/PedestrianLight.o \
+	${OBJECTDIR}/PushButton.o \
+	${OBJECTDIR}/Road.o \
+	${OBJECTDIR}/TrafficLight.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,6 +69,46 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trafficlights.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trafficlights ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Carsensor.o: Carsensor.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Carsensor.o Carsensor.c
+
+${OBJECTDIR}/Crossing.o: Crossing.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Crossing.o Crossing.c
+
+${OBJECTDIR}/Crosswalk.o: Crosswalk.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Crosswalk.o Crosswalk.c
+
+${OBJECTDIR}/Lane.o: Lane.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Lane.o Lane.c
+
+${OBJECTDIR}/PedestrianLight.o: PedestrianLight.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/PedestrianLight.o PedestrianLight.c
+
+${OBJECTDIR}/PushButton.o: PushButton.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/PushButton.o PushButton.c
+
+${OBJECTDIR}/Road.o: Road.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Road.o Road.c
+
+${OBJECTDIR}/TrafficLight.o: TrafficLight.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/TrafficLight.o TrafficLight.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
