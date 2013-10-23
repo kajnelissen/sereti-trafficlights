@@ -7,13 +7,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "Crossing.h"   
 
 /*
  * 
  */
 int main(int argc, char** argv) {
     Crossing* crossing;
-    create_crossing(crossing);
+    crossing_init(4);
     
     
     

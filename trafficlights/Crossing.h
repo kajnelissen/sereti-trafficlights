@@ -13,15 +13,14 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
-    Crossing* crossing;
     
-    struct Crossing{
+    typedef struct {
         //STD state;
         Road roads[4];
-    };
-    typedef struct Crossing Crossing;
+    } Crossing;
 
+    Crossing crossing;
+    
     void crossing_init(int countRoads);
     void add_road(int i);
      

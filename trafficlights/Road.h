@@ -6,6 +6,7 @@
  */
 
 #include "Crosswalk.h"
+#include "Lane.h"
 
 #ifndef ROAD_H
 #define	ROAD_H
@@ -14,10 +15,10 @@
 extern "C" {
 #endif
     
-    struct Road{
+    typedef struct{
         Lane lanes[3];
         Crosswalk crosswalk;
-    };
+    } Road;
     
     Road create_road();
 

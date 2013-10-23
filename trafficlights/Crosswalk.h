@@ -10,17 +10,11 @@
 #ifndef CROSSWALK_H
 #define	CROSSWALK_H
 
-struct Crosswalk{
+typedef struct{
     PedestrianLight pedestrianlight[2];
-};
+} Crosswalk;
 
-Crosswalk create_crosswalk(){
-    Crosswalk crosswalk;
-    
-    for(int i = 0; i < 2; i++){
-        crosswalk->pedestrianlight[i] = create_pedestrianlight();
-    }
-}
+Crosswalk create_crosswalk();
 
 #ifdef	__cplusplus
 extern "C" {

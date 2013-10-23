@@ -11,10 +11,10 @@
 #ifndef PEDESTRIANLIGHT_H
 #define	PEDESTRIANLIGHT_H
 
-struct PedestrianLight{
+typedef struct{
     Light light;
     PushButton pushbutton;
-};
+} PedestrianLight;
 
 PedestrianLight create_pedestrianlight();
 

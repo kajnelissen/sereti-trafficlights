@@ -8,9 +8,9 @@
 #ifndef PUSHBUTTON_H
 #define	PUSHBUTTON_H
 
-struct PushButton{
-    bool status;
-};
+typedef struct{
+    int status;
+} PushButton;
 
 PushButton create_pushbutton();
 

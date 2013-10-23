@@ -24,6 +24,7 @@
                    projectFiles="true">
       <itemPath>Carsensor.c</itemPath>
       <itemPath>Crossing.c</itemPath>
+      <itemPath>Crosswalk.c</itemPath>
       <itemPath>Lane.c</itemPath>
       <itemPath>PedestrianLight.c</itemPath>
       <itemPath>PushButton.c</itemPath>
@@ -61,6 +62,8 @@
       <item path="Crossing.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Crossing.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Crosswalk.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Crosswalk.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -119,6 +122,8 @@
       <item path="Crossing.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Crossing.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Crosswalk.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Crosswalk.h" ex="false" tool="3" flavor2="0">
       </item>

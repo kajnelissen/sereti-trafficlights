@@ -2,9 +2,12 @@
 
 Road create_road(){
     Road road;    
-    road->crosswalk = create_crosswalk();  
+    road.crosswalk = create_crosswalk();  
     
-    for(int i = 0; i < 3; i++){
-        road->lanes[i] = create_lane();
+    int i;
+    for(i = 0; i < 3; i++){
+        road.lanes[i] = create_lane();
     }
+    
+    return road;
 }

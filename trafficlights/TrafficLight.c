@@ -3,7 +3,7 @@
 
 TrafficLight create_trafficlight(){
     TrafficLight trafficlight;
-    trafficlight.light = Light.RED;
+    trafficlight.light = 2;
     
     return trafficlight;
 }

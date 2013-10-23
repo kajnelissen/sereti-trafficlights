@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Carsensor.o \
 	${OBJECTDIR}/Crossing.o \
+	${OBJECTDIR}/Crosswalk.o \
 	${OBJECTDIR}/Lane.o \
 	${OBJECTDIR}/PedestrianLight.o \
 	${OBJECTDIR}/PushButton.o \
@@ -78,6 +79,11 @@ ${OBJECTDIR}/Crossing.o: Crossing.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Crossing.o Crossing.c
+
+${OBJECTDIR}/Crosswalk.o: Crosswalk.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Crosswalk.o Crosswalk.c
 
 ${OBJECTDIR}/Lane.o: Lane.c 
 	${MKDIR} -p ${OBJECTDIR}

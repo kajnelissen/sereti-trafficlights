@@ -5,6 +5,8 @@
  * Created on 7 oktober 2013, 23:05
  */
 
+#include "Light.h"
+
 #ifndef TRAFFICLIGHT_H
 #define	TRAFFICLIGHT_H
 
@@ -12,9 +14,9 @@
 extern "C" {
 #endif
 
-    struct TrafficLight{
+    typedef struct TrafficLight{
         Light light;
-    };
+    } TrafficLight;
 
     TrafficLight create_trafficlight();
 #ifdef	__cplusplus

@@ -1,10 +1,12 @@
 #include "Crossing.h"
+#include <stdlib.h>
 
 void crossing_init(int countRoads){
         struct Crossing *ptr;
-        ptr = (struct Crossing *) calloc(1, sizeof(struct Crossing ) );
+        ptr = (struct Crossing *) calloc(1, sizeof ptr );
         
-        for(int i = 0; i < countRoads; i++){
+        int i;
+        for(i = 0; i < countRoads; i++){
             add_road(i);
         }
     } 

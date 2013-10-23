@@ -11,10 +11,10 @@
 #ifndef LANE_H
 #define	LANE_H
 
-struct Lane {
+typedef struct {
     CarSensor carsensor;
     TrafficLight trafficlight;
-};
+} Lane;
 
 Lane create_lane();
 

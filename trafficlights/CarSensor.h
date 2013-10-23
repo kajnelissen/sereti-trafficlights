@@ -8,9 +8,10 @@
 #ifndef CARSENSOR_H
 #define	CARSENSOR_H
 
-struct CarSensor {
-    bool status;
-};
+typedef struct {
+    int status;
+} CarSensor;
+
 
 CarSensor create_carsensor();
 
