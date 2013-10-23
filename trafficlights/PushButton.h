@@ -12,10 +12,7 @@ struct PushButton{
     bool status;
 };
 
-PushButton create_pushbutton(){
-    PushButton pushbutton;
-    pushbutton->status = false;
-}
+PushButton create_pushbutton();
 
 #ifdef	__cplusplus
 extern "C" {

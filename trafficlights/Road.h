@@ -19,10 +19,7 @@ extern "C" {
         Crosswalk crosswalk;
     };
     
-    Road create_road(){
-        Road road;
-        road->crosswalk = create_crosswalk();
-    }
+    Road create_road();
 
 
 #ifdef	__cplusplus

@@ -16,7 +16,7 @@ extern "C" {
         Light light;
     };
 
-
+    TrafficLight create_trafficlight();
 #ifdef	__cplusplus
 }
 #endif

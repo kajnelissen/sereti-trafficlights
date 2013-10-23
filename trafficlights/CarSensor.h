@@ -12,6 +12,8 @@ struct CarSensor {
     bool status;
 };
 
+CarSensor create_carsensor();
+
 #ifdef	__cplusplus
 extern "C" {
 #endif

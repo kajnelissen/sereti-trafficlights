@@ -16,12 +16,7 @@ struct PedestrianLight{
     PushButton pushbutton;
 };
 
-PedestrianLight create_pedestrianlight(){
-    PedestrianLight pedestrianlight;
-    Light light;
-    pedestrianlight->light = light->RED;
-    pedestrianlight->pushbutton = create_pushbutton();
-}
+PedestrianLight create_pedestrianlight();
 
 #ifdef	__cplusplus
 extern "C" {
