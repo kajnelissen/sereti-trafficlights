@@ -43,7 +43,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/PushButton.o \
 	${OBJECTDIR}/Road.o \
 	${OBJECTDIR}/TrafficLight.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/ntk.o
 
 
 # C Compiler Flags
@@ -114,6 +115,11 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/ntk.o: ntk.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/ntk.o ntk.c
 
 # Subprojects
 .build-subprojects:
