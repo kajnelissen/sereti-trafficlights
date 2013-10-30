@@ -6,6 +6,7 @@
  */
 
 #include "Road.h"
+#include "ntk.h"
 
 #ifndef CROSSING_H
 #define	CROSSING_H
@@ -39,13 +40,19 @@ extern "C" {
     
     typedef struct {
         //STD state;
+        
+        crossingState status;
+        task* crossingController;	/*implementatie concurrent gedrag, aktief object*/
+        mailBox mailForCrossing;
         Road roads[4];
     } Crossing;
 
-    Crossing crossing;
+    Crossing* crossing;
     
     void crossing_init(int countRoads);
     void add_road(int i);
+    
+    void sendEvent_crossing(Crossing* v, eventForCrossing e);
      
 #ifdef	__cplusplus
 }
