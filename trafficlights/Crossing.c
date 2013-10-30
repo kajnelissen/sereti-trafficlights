@@ -6,82 +6,139 @@ static STD* crossing_STD=NULL;
 
 /*Crossing Actions*/
 
-static void lightsAction1(){
-    
+/**/
+static void lightsAction1(Crossing *crossing){
+    int i;
+    for(i = 0; i < 4; i++){
+        int j;
+        for(j = 0; j < 2; j++){
+            crossing->roads[i].crosswalk.pedestrianlight[j].light=GREEN;
+        }
+    }
 }
 
-static void lightsAction2(){
-    
+static void lightsAction2(Crossing *crossing){
+    int i;
+    for(i = 0; i < 4; i++){
+        int j;
+        for(j = 0; j < 2; j++){
+            crossing->roads[i].crosswalk.pedestrianlight[j].light=RED;
+        }
+    }
 }
 
-static void lightsAction3(){
-    
+//0 = links
+//1 = rechtdoor
+//2 = rechts
+static void lightsAction3(Crossing *crossing){
+    //Road 1
+    crossing->roads[0].lanes[1].trafficlight.light=GREEN;
+    crossing->roads[0].lanes[2].trafficlight.light=GREEN;
+    //Road 3
+    crossing->roads[2].lanes[1].trafficlight.light=GREEN;
+    crossing->roads[2].lanes[2].trafficlight.light=GREEN;
 }
 
-static void lightsAction4(){
+
+static void lightsAction4(Crossing *crossing){
+    int i;
+    int j;
     
+    for(i = 0; i<4; i++)
+    {
+        for(j = 0; j<3; j++)
+        {
+            if(crossing->roads[i].lanes[j].trafficlight.light=GREEN)
+            {
+                crossing->roads[i].lanes[j].trafficlight.light=ORANGE;
+            }
+        }
+    }
 }
 
-static void lightsAction5(){
+static void lightsAction5(Crossing *crossing){
+    int i;
+    int j;
     
+    for(i = 0; i<4; i++)
+    {
+        for(j = 0; j<3; j++)
+        {
+              if(crossing->roads[i].lanes[j].trafficlight.light=ORANGE)
+            {
+                crossing->roads[i].lanes[j].trafficlight.light=RED;
+            }
+        }
+    }
 }
 
-static void lightsAction6(){
-    
+static void lightsAction6(Crossing *crossing){
+     //Road 2
+    crossing->roads[1].lanes[1].trafficlight.light=GREEN;
+    crossing->roads[1].lanes[2].trafficlight.light=GREEN;
+    //Road 4
+    crossing->roads[3].lanes[1].trafficlight.light=GREEN;
+    crossing->roads[3].lanes[2].trafficlight.light=GREEN;
 }
 
-static void lightsAction7(){
-    
+static void lightsAction7(Crossing *crossing){
+     //Road 1
+    crossing->roads[0].lanes[0].trafficlight.light=GREEN;
+    //Road 3
+    crossing->roads[2].lanes[0].trafficlight.light=GREEN;
 }
 
-static void lightsAction8(){
-    
+static void lightsAction8(Crossing *crossing){
+     //Road 2
+    crossing->roads[1].lanes[0].trafficlight.light=GREEN;
+    //Road 4
+    crossing->roads[3].lanes[0].trafficlight.light=GREEN;
 }
 
 /*Voetgangers groen*/
 static void action1(void* v){
     crossing->status=K1;
-    lightsAction1();
+    lightsAction1(crossing);
 }
 
 /*Voetgangers rood - na bepaalde tijd*/
 static void action2(void* v){
     crossing->status=K6;
-    lightsAction2();
+    lightsAction2(crossing);
 }
 
 /*Weg 1 en 3 rechtdoor en rechtsaf groen*/
 static void action3(void* v){
     crossing->status=K2;
-    lightsAction3();
+    lightsAction3(crossing);
 }
 
 /*Alle groene lichten naar oranje*/
 static void action4(void* v){
-    lightsAction4();
+    lightsAction4(crossing);
 }
 
 /*Alle oranje lichten naar rood*/
 static void action5(void* v){
-    lightsAction5();
+    lightsAction5(crossing);
 }
 
 /*Weg 2 en 4 rechtdoor en rechtsaf groen*/
 static void action6(void* v){
     crossing->status=K3;
-    lightsAction6();
+    lightsAction6(crossing);
 }
 
 /*Weg 1 en 3 linksaf groen*/
 static void action7(void* v){
     crossing->status=K4;
-    lightsAction7();
+    lightsAction7(crossing);
 }
 
 /*Weg 2 en 4 linksaf groen*/
 static void action8(void* v){
     crossing->status=K5;
-    lightsAction8();
+    lightsAction8(crossing);
 }
 
 /*Alles lichten rood*/
@@ -90,8 +147,8 @@ static void defaultAction(void* v){
 }
 
 void crossing_init(int countRoads){
-        struct Crossing *ptr;
-        ptr = (struct Crossing *) calloc(1, sizeof ptr );
+        //struct Crossing *ptr;
+        crossing = (struct Crossing *) calloc(1, sizeof crossing );
         
         if(crossing_STD==NULL){
             crossing_STD=(STD*)malloc(sizeof(STD));
@@ -124,6 +181,7 @@ void crossing_init(int countRoads){
         
         //Crossing in beginstatus brengen
 //	ptr->status=K6;
+        crossing->status=K6;
         
         //Taak creeren en starten voor het vat
 //	ptr->vatController=(task*)malloc(sizeof(task));
