@@ -1,7 +1,10 @@
 #include <ncurses/curses.h>
 #include "simulation.h"
 
-
+/**
+ * 
+ * @param crossing
+ */
 void simulate(Crossing* crossing) {
     printf("Start simulatie...");
     
@@ -14,17 +17,27 @@ void simulate(Crossing* crossing) {
     while ( 1 ) {
         // break on pressing escape key (key code = 27))
         key = getch();
-        if ( key == KEY_ENTER ) {
+        if ( key == 27 ) {
             break;
+        } else {
+            car(crossing);
         }
-        car(crossing);
     }
     
     printf("Einde simulatie");
 }
 
+/**
+ * Triggers a car sensor in one of the lanes of a road,
+ * but only 
+ * @param crossing
+ */
 void car(Crossing* crossing) {
     
-    printf("Sensor merkt auto op!");
+    
+    
+    printf("Sensor merkt auto op!\n");
     
 }
+
+

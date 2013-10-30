@@ -15,6 +15,6 @@ void add_road(int i){
     crossing.roads[i] = create_road();
 }
 
-Road get_road(int i) {
-    
+Road get_road(Crossing* c, int i) {
+    return c->roads[i];
 }
