@@ -1,5 +1,7 @@
-build/Debug/Cygwin_4.x_1-Windows/PedestrianLight.o: PedestrianLight.c \
+build/Debug/Cygwin_4.x-Windows/Crosswalk.o: Crosswalk.c Crosswalk.h \
  PedestrianLight.h PushButton.h Light.h
+
+Crosswalk.h:
 
 PedestrianLight.h:
 

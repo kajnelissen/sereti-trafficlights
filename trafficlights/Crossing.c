@@ -14,3 +14,7 @@ void crossing_init(int countRoads){
 void add_road(int i){
     crossing.roads[i] = create_road();
 }
+
+Road get_road(int i) {
+    
+}

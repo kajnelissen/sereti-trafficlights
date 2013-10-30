@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=Cygwin_4.x_1-Windows
+CND_PLATFORM=Cygwin_4.x-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Release
 CND_DISTDIR=dist
@@ -42,8 +42,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/PedestrianLight.o \
 	${OBJECTDIR}/PushButton.o \
 	${OBJECTDIR}/Road.o \
+	${OBJECTDIR}/STD_Vat.o \
 	${OBJECTDIR}/TrafficLight.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/ntk.o \
+	${OBJECTDIR}/simulation.o
 
 
 # C Compiler Flags
@@ -105,6 +108,11 @@ ${OBJECTDIR}/Road.o: Road.c
 	${RM} $@.d
 	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Road.o Road.c
 
+${OBJECTDIR}/STD_Vat.o: STD_Vat.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/STD_Vat.o STD_Vat.c
+
 ${OBJECTDIR}/TrafficLight.o: TrafficLight.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -114,6 +122,16 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/ntk.o: ntk.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/ntk.o ntk.c
+
+${OBJECTDIR}/simulation.o: simulation.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/simulation.o simulation.c
 
 # Subprojects
 .build-subprojects:

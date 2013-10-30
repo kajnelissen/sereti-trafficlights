@@ -7,7 +7,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Crossing.h"   
+#include "Crossing.h" 
+#include "simulation.h"
+
+#define NR_ROADS        4
 
 /*
  * 
@@ -16,7 +19,7 @@ int main(int argc, char** argv) {
     Crossing* crossing;
     crossing_init(4);
     
-    
+    simulate(crossing);
     
     return (EXIT_SUCCESS);
 }
