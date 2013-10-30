@@ -6,49 +6,87 @@ static STD* crossing_STD=NULL;
 
 /*Crossing Actions*/
 
+static void lightsAction1(){
+    
+}
+
+static void lightsAction2(){
+    
+}
+
+static void lightsAction3(){
+    
+}
+
+static void lightsAction4(){
+    
+}
+
+static void lightsAction5(){
+    
+}
+
+static void lightsAction6(){
+    
+}
+
+static void lightsAction7(){
+    
+}
+
+static void lightsAction8(){
+    
+}
+
 /*Voetgangers groen*/
 static void action1(void* v){
-    
+    crossing->status=K1;
+    lightsAction1();
 }
 
 /*Voetgangers rood - na bepaalde tijd*/
 static void action2(void* v){
-    
+    crossing->status=K6;
+    lightsAction2();
 }
 
 /*Weg 1 en 3 rechtdoor en rechtsaf groen*/
 static void action3(void* v){
-    
+    crossing->status=K2;
+    lightsAction3();
 }
 
 /*Alle groene lichten naar oranje*/
 static void action4(void* v){
-    
+    lightsAction4();
 }
 
 /*Alle oranje lichten naar rood*/
 static void action5(void* v){
-    
+    lightsAction5();
 }
 
 /*Weg 2 en 4 rechtdoor en rechtsaf groen*/
 static void action6(void* v){
-    
+    crossing->status=K3;
+    lightsAction6();
 }
 
 /*Weg 1 en 3 linksaf groen*/
 static void action7(void* v){
-    
+    crossing->status=K4;
+    lightsAction7();
 }
 
 /*Weg 2 en 4 linksaf groen*/
 static void action8(void* v){
-    
+    crossing->status=K5;
+    lightsAction8();
 }
 
 /*Alles lichten rood*/
 static void defaultAction(void* v){
-    
+    crossing->status=K6;
 }
 
 void crossing_init(int countRoads){
@@ -81,6 +119,16 @@ void crossing_init(int countRoads){
             addTransition_STD(crossing_STD, Orange5, Event5, K6, action5);
         }
         
+        //Mailbox aanmaken, waar 16 berichten in passen
+	create_mailBox(&(crossing->mailForCrossing),16,sizeof(eventForCrossing));
+        
+        //Crossing in beginstatus brengen
+//	ptr->status=K6;
+        
+        //Taak creeren en starten voor het vat
+//	ptr->vatController=(task*)malloc(sizeof(task));
+//	create_task(ptr->crossingController,vatTask,&v,sizeof(vat*),0);
+        
         int i;
         for(i = 0; i < countRoads; i++){
             add_road(i);
@@ -88,5 +136,10 @@ void crossing_init(int countRoads){
     } 
         
 void add_road(int i){
-    crossing.roads[i] = create_road();
+    crossing->roads[i] = create_road();
+}
+
+//Functie om een gebeurtenis (event) te sturen naar het vat
+void sendEvent_crossing(Crossing* c,eventForCrossing e){
+	put_mailBox(&(c->mailForCrossing),&e);
 }
