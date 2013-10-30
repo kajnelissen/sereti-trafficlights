@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
     Crossing* crossing;
     crossing_init(4);
     
-    
+    printf("Als deze tekst getoond wordt heeft er een wonder voor u ogen plaatsgevonden!");
     
     return (EXIT_SUCCESS);
 }
