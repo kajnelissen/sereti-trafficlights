@@ -97,52 +97,61 @@ static void lightsAction8(Crossing *crossing){
 
 /*Voetgangers groen*/
 static void action1(void* v){
+    Crossing* crossing = (Crossing*) v;
     crossing->status=K1;
     lightsAction1(crossing);
 }
 
 /*Voetgangers rood - na bepaalde tijd*/
 static void action2(void* v){
+    Crossing* crossing = (Crossing*) v;
     crossing->status=K6;
     lightsAction2(crossing);
 }
 
 /*Weg 1 en 3 rechtdoor en rechtsaf groen*/
 static void action3(void* v){
+    Crossing* crossing = (Crossing*) v;
     crossing->status=K2;
     lightsAction3(crossing);
 }
 
 /*Alle groene lichten naar oranje*/
 static void action4(void* v){
+    Crossing* crossing = (Crossing*) v;
     lightsAction4(crossing);
 }
 
 /*Alle oranje lichten naar rood*/
 static void action5(void* v){
+    Crossing* crossing = (Crossing*) v;
     lightsAction5(crossing);
 }
 
 /*Weg 2 en 4 rechtdoor en rechtsaf groen*/
 static void action6(void* v){
+    Crossing* crossing = (Crossing*) v;
     crossing->status=K3;
     lightsAction6(crossing);
 }
 
 /*Weg 1 en 3 linksaf groen*/
 static void action7(void* v){
+    Crossing* crossing = (Crossing*) v;
     crossing->status=K4;
     lightsAction7(crossing);
 }
 
 /*Weg 2 en 4 linksaf groen*/
 static void action8(void* v){
+    Crossing* crossing = (Crossing*) v;
     crossing->status=K5;
     lightsAction8(crossing);
 }
 
 /*Alles lichten rood*/
 static void defaultAction(void* v){
+    Crossing* crossing = (Crossing*) v;
     crossing->status=K6;
 }
 
@@ -170,9 +179,11 @@ static unsigned __stdcall vatTask(void* arg){
 	return 0;
 }
 
-void crossing_init(int countRoads){
+//void crossing_init(int countRoads){
+void crossing_init(Crossing* c, int countRoads){
         //struct Crossing *ptr;
-        crossing = (struct Crossing *) calloc(1, sizeof crossing );
+//        crossing = (struct Crossing *) calloc(1, sizeof crossing );
+        c = (struct Crossing *) calloc(1, sizeof c );
         
         if(crossing_STD==NULL){
             crossing_STD=(STD*)malloc(sizeof(STD));
@@ -201,11 +212,12 @@ void crossing_init(int countRoads){
         }
         
         //Mailbox aanmaken, waar 16 berichten in passen
-	create_mailBox(&(crossing->mailForCrossing),16,sizeof(eventForCrossing));
+//	create_mailBox(&(crossing->mailForCrossing),16,sizeof(eventForCrossing));
+        create_mailBox(&(c->mailForCrossing),16,sizeof(eventForCrossing));
         
         //Crossing in beginstatus brengen
 //	ptr->status=K6;
-        crossing->status=K6;
+        c->status=K6;
         
         //Taak creeren en starten voor het vat
 //	ptr->vatController=(task*)malloc(sizeof(task));
@@ -213,16 +225,16 @@ void crossing_init(int countRoads){
         
         int i;
         for(i = 0; i < countRoads; i++){
-            add_road(i);
+            add_road(c, i);
         }
         
         //Taak creeren en starten voor het vat
-	crossing->crossingController=(task*)malloc(sizeof(task));
-	create_task(crossing->crossingController,vatTask,&crossing,sizeof(Crossing*),0);
+	c->crossingController=(task*)malloc(sizeof(task));
+	create_task(c->crossingController,vatTask,&crossing,sizeof(Crossing*),0);
     } 
         
-void add_road(int i){
-    crossing->roads[i] = create_road();
+void add_road(Crossing* c, int i){
+    c->roads[i] = create_road();
 }
 
 //Functie om een gebeurtenis (event) te sturen naar het vat
