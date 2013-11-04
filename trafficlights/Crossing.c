@@ -230,7 +230,7 @@ void crossing_init(Crossing* c, int countRoads){
         
         //Taak creeren en starten voor het vat
 	c->crossingController=(task*)malloc(sizeof(task));
-	create_task(c->crossingController,crossingTask,&crossing,sizeof(Crossing*),0);
+	create_task(c->crossingController,crossingTask,&c,sizeof(Crossing*),0);
     } 
         
 void add_road(Crossing* c, int i){

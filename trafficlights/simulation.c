@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <ncurses/curses.h>
 #include <time.h>
 #include "simulation.h"
@@ -25,10 +27,10 @@ void simulate(Crossing* crossing) {
         if ( key == 27 ) {
             break;
         } else {
-            int random = rand() % 10000;
-            if ( random == 9999 ) {
+//            int random = rand() % 10000;
+//            if ( random == 9999 ) {
                 car_arrival(crossing);
-            }
+//            }
         }
     }
     
@@ -45,6 +47,8 @@ void car_arrival(Crossing* crossing) {
 //    struct Road* r;
 //    r = (struct Road*) calloc(1, sizeof r );
 //    r = get_road(crossing, 1);
+    
+    sleep(2);
     
     printf("Sensor merkt auto op!\n");
     
