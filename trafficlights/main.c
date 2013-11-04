@@ -17,8 +17,8 @@
  */
 int main(int argc, char** argv) {
     Crossing* crossing;
-    crossing_init(NR_ROADS);
-    
+//    crossing_init(NR_ROADS);
+    crossing_init(crossing, NR_ROADS);
     simulate(crossing);
     
     return (EXIT_SUCCESS);

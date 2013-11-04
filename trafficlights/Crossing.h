@@ -51,10 +51,10 @@ extern "C" {
     
     static STD* crossing_STD=NULL;
     
-    void crossing_init(int countRoads);
-    void add_road(int i);
+    void crossing_init(Crossing* c, int countRoads);
+    void add_road(Crossing* c, int i);
     
-    void sendEvent_crossing(Crossing* v, eventForCrossing e);
+    void sendEvent_crossing(Crossing* c, eventForCrossing e);
      
 #ifdef	__cplusplus
 }
