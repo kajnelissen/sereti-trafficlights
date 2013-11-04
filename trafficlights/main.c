@@ -7,16 +7,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Crossing.h"   
+#include "Crossing.h" 
+#include "simulation.h"
+
+#define NR_ROADS        4
 
 /*
  * 
  */
 int main(int argc, char** argv) {
     Crossing* crossing;
-    crossing_init(4);
+    crossing_init(NR_ROADS);
     
-    printf("Als deze tekst getoond wordt heeft er een wonder voor u ogen plaatsgevonden!");
+    simulate(crossing);
     
     return (EXIT_SUCCESS);
 }
