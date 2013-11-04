@@ -183,7 +183,7 @@ static unsigned __stdcall crossingTask(void* arg){
 void crossing_init(Crossing* c, int countRoads){
         //struct Crossing *ptr;
 //        crossing = (struct Crossing *) calloc(1, sizeof crossing );
-        c = (struct Crossing *) calloc(1, sizeof c );
+//        c = (struct Crossing *) calloc(1, sizeof c );
         
         if(crossing_STD==NULL){
             crossing_STD=(STD*)malloc(sizeof(STD));

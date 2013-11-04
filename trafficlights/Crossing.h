@@ -42,7 +42,7 @@ extern "C" {
         //STD state;
         
         crossingState status;
-        task* crossingController;	/*implementatie concurrent gedrag, aktief object*/
+        task* crossingController;	/*implementatie concurrent gedrag, actief object*/
         mailBox mailForCrossing;
         Road roads[4];
     } Crossing;
