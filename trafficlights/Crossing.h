@@ -14,6 +14,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+    
     typedef enum {
 	Event1, // Drukknop ingedrukt door voetganger
 	Event2, // Time-out(15sec)
@@ -36,11 +37,9 @@ extern "C" {
         Orange3,
         Orange4,
         Orange5               
-    }crossingState;
+    } crossingState;
     
     typedef struct {
-        //STD state;
-        
         crossingState status;
         task* crossingController;	/*implementatie concurrent gedrag, actief object*/
         mailBox mailForCrossing;
@@ -49,10 +48,12 @@ extern "C" {
 
     Crossing* crossing;
     
-    static STD* crossing_STD=NULL;
+    static STD* crossing_STD = NULL;
     
     void crossing_init(Crossing* c, int countRoads);
     void add_road(Crossing* c, int i);
+    
+    void print_state(Crossing* c);
     
     void sendEvent_crossing(Crossing* c, eventForCrossing e);
      

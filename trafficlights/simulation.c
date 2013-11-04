@@ -22,6 +22,9 @@ void simulate(Crossing* crossing) {
     srand(time(NULL));
     
     while ( 1 ) {
+        
+        print_state(crossing);
+        
         // break on pressing escape key (key code = 27))
         key = getch();
         if ( key == 27 ) {

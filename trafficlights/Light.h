@@ -12,7 +12,12 @@ typedef enum {
     GREEN,
     ORANGE,
     RED        
-}Light;
+} Light;
+
+static inline char *str_light(Light l) {
+    char* strings[3] = { "g", "o", "r" };
+    return *strings[l];
+}
 
 #ifdef	__cplusplus
 extern "C" {
