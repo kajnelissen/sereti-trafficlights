@@ -20,7 +20,7 @@ extern "C" {
 
     void simulate(Crossing* c);
     
-    void car(Crossing* c);
+    void car_arrival(Crossing* );
 
 
 #ifdef	__cplusplus
