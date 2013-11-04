@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "ntk.h"
 
-static STD* crossing_STD=NULL;
+
 
 /*Crossing Actions*/
 
@@ -146,6 +146,30 @@ static void defaultAction(void* v){
     crossing->status=K6;
 }
 
+//Taak voor het vat object
+static unsigned __stdcall vatTask(void* arg){
+	task* t=(task*)arg;
+	Crossing* c=*((Crossing**)(getArgument_task(t)));
+	eventForCrossing e;
+	actionType a;
+
+	//Zolang het vat nog bestaat, zal deze taak actief blijven
+	while(!isTerminated_task(t)){
+		//Wacht tot er een gebeurtenis (event) plaats heeft gevonden, mbv een mailbox
+		get_mailBox(&(c->mailForCrossing),&e);
+
+		//Zoek de status op en voer de juiste actie uit.
+
+		//<NIEUWE TOESTAND> = lookUp_STD(<VERWIJZING NAAR STD>, <HUIDIGE TOESTAND>, <GEBEURTENIS>, <WELKE ACTIE?>)
+		c->status = (crossingState)lookUp_STD(crossing_STD,c->status,e,&a);
+		
+		//Voer actie uit
+		a(c);
+	}
+
+	return 0;
+}
+
 void crossing_init(int countRoads){
         //struct Crossing *ptr;
         crossing = (struct Crossing *) calloc(1, sizeof crossing );
@@ -191,6 +215,10 @@ void crossing_init(int countRoads){
         for(i = 0; i < countRoads; i++){
             add_road(i);
         }
+        
+        //Taak creeren en starten voor het vat
+	crossing->crossingController=(task*)malloc(sizeof(task));
+	create_task(crossing->crossingController,vatTask,&crossing,sizeof(Crossing*),0);
     } 
         
 void add_road(int i){

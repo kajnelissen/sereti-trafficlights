@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=Cygwin_4.x_1-Windows
+CND_PLATFORM=Cygwin_4.x-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -44,7 +44,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Road.o \
 	${OBJECTDIR}/TrafficLight.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/ntk.o
+	${OBJECTDIR}/ntk.o \
+	${OBJECTDIR}/simulation.o
 
 
 # C Compiler Flags
@@ -120,6 +121,11 @@ ${OBJECTDIR}/ntk.o: ntk.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/ntk.o ntk.c
+
+${OBJECTDIR}/simulation.o: simulation.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/simulation.o simulation.c
 
 # Subprojects
 .build-subprojects:

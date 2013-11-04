@@ -46,6 +46,8 @@ void car_arrival(Crossing* crossing) {
 //    r = (struct Road*) calloc(1, sizeof r );
 //    r = get_road(crossing, 1);
     
+    printf("Sensor merkt auto op!\n");
+    
     int random = rand() % 8;
     switch (random) {
         case 0:
@@ -85,6 +87,6 @@ void car_arrival(Crossing* crossing) {
             break;
     }
     
-    printf("Sensor merkt auto op!\n");
+    
     
 }

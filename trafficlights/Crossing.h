@@ -49,6 +49,8 @@ extern "C" {
 
     Crossing* crossing;
     
+    static STD* crossing_STD=NULL;
+    
     void crossing_init(int countRoads);
     void add_road(int i);
     

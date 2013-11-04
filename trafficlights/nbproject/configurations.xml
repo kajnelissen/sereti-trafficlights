@@ -13,7 +13,9 @@
       <itemPath>PushButton.h</itemPath>
       <itemPath>Road.h</itemPath>
       <itemPath>TrafficLight.h</itemPath>
+      <itemPath>curses.h</itemPath>
       <itemPath>ntk.h</itemPath>
+      <itemPath>simulation.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -32,6 +34,7 @@
       <itemPath>TrafficLight.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>ntk.c</itemPath>
+      <itemPath>simulation.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -50,14 +53,11 @@
     <conf name="Debug" type="1">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>Cygwin_4.x_1|Cygwin_4.x</compilerSet>
+        <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
-        <cTool>
-          <commandlineTool>gcc</commandlineTool>
-        </cTool>
         <linkerTool>
           <linkerLibItems>
             <linkerLibLibItem>ncurses</linkerLibLibItem>
@@ -98,11 +98,17 @@
       </item>
       <item path="TrafficLight.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="curses.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ntk.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ntk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="simulation.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="simulation.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -160,11 +166,17 @@
       </item>
       <item path="TrafficLight.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="curses.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ntk.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ntk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="simulation.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="simulation.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
