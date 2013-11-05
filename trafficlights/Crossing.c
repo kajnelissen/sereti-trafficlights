@@ -16,6 +16,10 @@ static void lightsAction1(Crossing *crossing){
             crossing->roads[i].crosswalk.pedestrianlight[j].light = GREEN;
         }
     }
+    
+    print_state(crossing);
+    
+    sleep(15);
 }
 
 static void lightsAction2(Crossing *crossing){
@@ -26,6 +30,8 @@ static void lightsAction2(Crossing *crossing){
             crossing->roads[i].crosswalk.pedestrianlight[j].light = RED;
         }
     }
+    print_state(crossing);
+    sleep(2);
 }
 
 //0 = links
@@ -38,6 +44,9 @@ static void lightsAction3(Crossing *crossing){
     //Road 3
     crossing->roads[2].lanes[1].trafficlight.light = GREEN;
     crossing->roads[2].lanes[2].trafficlight.light = GREEN;
+    
+    print_state(crossing);
+    sleep(15);
 }
 
 
@@ -49,12 +58,15 @@ static void lightsAction4(Crossing *crossing){
     {
         for(j = 0; j < 3; j++)
         {
-            if(crossing->roads[i].lanes[j].trafficlight.light = GREEN)
+            if(crossing->roads[i].lanes[j].trafficlight.light == GREEN)
             {
                 crossing->roads[i].lanes[j].trafficlight.light = ORANGE;
             }
         }
     }
+    
+    print_state(crossing);
+    sleep(3);
 }
 
 static void lightsAction5(Crossing *crossing){
@@ -65,12 +77,15 @@ static void lightsAction5(Crossing *crossing){
     {
         for(j = 0; j < 3; j++)
         {
-              if(crossing->roads[i].lanes[j].trafficlight.light = ORANGE)
+              if(crossing->roads[i].lanes[j].trafficlight.light == ORANGE)
             {
                 crossing->roads[i].lanes[j].trafficlight.light = RED;
             }
         }
     }
+    
+    print_state(crossing);
+    sleep(2);
 }
 
 static void lightsAction6(Crossing *crossing){
@@ -80,6 +95,9 @@ static void lightsAction6(Crossing *crossing){
     //Road 4
     crossing->roads[3].lanes[1].trafficlight.light = GREEN;
     crossing->roads[3].lanes[2].trafficlight.light = GREEN;
+    
+    print_state(crossing);
+    sleep(15);
 }
 
 static void lightsAction7(Crossing *crossing){
@@ -87,6 +105,9 @@ static void lightsAction7(Crossing *crossing){
     crossing->roads[0].lanes[0].trafficlight.light = GREEN;
     //Road 3
     crossing->roads[2].lanes[0].trafficlight.light = GREEN;
+    
+    print_state(crossing);
+    sleep(15);
 }
 
 static void lightsAction8(Crossing *crossing){
@@ -94,6 +115,9 @@ static void lightsAction8(Crossing *crossing){
     crossing->roads[1].lanes[0].trafficlight.light = GREEN;
     //Road 4
     crossing->roads[3].lanes[0].trafficlight.light = GREEN;
+    
+    print_state(crossing);
+    sleep(15);
 }
 
 /*Voetgangers groen*/

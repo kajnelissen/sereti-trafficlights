@@ -23,7 +23,7 @@ void simulate(Crossing* crossing) {
     
     while ( 1 ) {
         
-        print_state(crossing);
+        //print_state(crossing);
         
         // break on pressing escape key (key code = 27))
         key = getch();
@@ -60,34 +60,43 @@ void car_arrival(Crossing* crossing) {
         case 0:
             printf("Event #1.\n");
             sendEvent_crossing(crossing, Event1);
+            sendEvent_crossing(crossing, Event2);
             break;
         case 1:
-            printf("Event #2.\n");
-            sendEvent_crossing(crossing, Event2);
+            /*printf("Event #2.\n");
+            sendEvent_crossing(crossing, Event2);*/
             break;    
         case 2:
             printf("Event #3.\n");
             sendEvent_crossing(crossing, Event3);
+            sendEvent_crossing(crossing, Event4);
+            sendEvent_crossing(crossing, Event5);
             break;
         case 3:
-            printf("Event #4.\n");
-            sendEvent_crossing(crossing, Event4);
+            /*printf("Event #4.\n");
+            sendEvent_crossing(crossing, Event4);*/
             break;
         case 4:
-            printf("Event #5.\n");
-            sendEvent_crossing(crossing, Event5);
+            /*printf("Event #5.\n");
+            sendEvent_crossing(crossing, Event5);*/
             break;
         case 5:
             printf("Event #6.\n");
             sendEvent_crossing(crossing, Event6);
+            sendEvent_crossing(crossing, Event4);
+            sendEvent_crossing(crossing, Event5);
             break;
         case 6:
             printf("Event #7.\n");
             sendEvent_crossing(crossing, Event7);
+            sendEvent_crossing(crossing, Event4);
+            sendEvent_crossing(crossing, Event5);
             break;
         case 7:
             printf("Event #8.\n");
             sendEvent_crossing(crossing, Event8);
+            sendEvent_crossing(crossing, Event4);
+            sendEvent_crossing(crossing, Event5);
             break;
         default:
             printf("Geen actie.\n");
