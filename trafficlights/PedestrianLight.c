@@ -2,7 +2,7 @@
 
 PedestrianLight create_pedestrianlight(){
     PedestrianLight pedestrianlight;
-    Light light;
+//    Light light;
     pedestrianlight.light = 2;
     pedestrianlight.pushbutton = create_pushbutton();
     

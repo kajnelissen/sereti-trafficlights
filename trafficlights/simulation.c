@@ -32,7 +32,7 @@ void simulation(Crossing* crossing) {
             if ( random <= 7 ) {
                 sim_car(crossing);
             } else {
-//                sim_pedestrian(crossing);
+                sim_pedestrian(crossing);
             }
             sleep(seconds_wait);
         }
