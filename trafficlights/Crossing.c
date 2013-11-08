@@ -257,7 +257,7 @@ void add_road(Crossing* c, int i) {
 }
 
 void print_state(Crossing* c) {
-    printf("> Toestand = [%d] = ((%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c))\n", 
+    printf("\t> State = [%d] = ((%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c))\n", 
             c->status,
             str_light(c->roads[0].crosswalk.pedestrianlight[0].light),
             str_light(c->roads[0].lanes[0].trafficlight.light),

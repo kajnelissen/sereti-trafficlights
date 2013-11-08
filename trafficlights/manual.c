@@ -5,30 +5,37 @@
 #include "Crossing.h"
 #include "manual.h"
 
-void manual(Crossing* c) {
-    printf("Starting manual run...\n\n");
+void manual(Crossing* crossing) {
+    printf("\nStarting manual run...\n\n");
     
     int road = - 1;
     int lane = -1;
     
+    int seconds_wait = crossing->seconds_green + crossing->seconds_orange + 3;
+    
     display_help();
     
     while ( 1 ) {
-        while ( road < 0 || road > 3 ) {
-            printf("Trigger something on which road? Value must be in range [0,3]\n");
+        while ( road < 1 || road > 4 ) {
+            printf("\nTrigger something on which road? Value must be in range [1,4]\n");
             scanf("%d",&road);
         }
 
-        while ( lane < 0 || lane > 3 ) {
-            printf("Which lane? Value must be in set [1,2,3,4]\n");
+        while ( lane < 1 || lane > 4 ) {
+            printf("Which lane? Value must be in range [1,4]\n");
             scanf("%d",&lane);
         }
         
         if ( lane == 4 ) {
-            trigger_crosswalk(crossing, road);
+            trigger_crosswalk(crossing, road - 1);
         } else {
-            trigger_sensor(crossing, road, lane - 1);
+            trigger_sensor(crossing, road - 1, lane - 1);
         }
+        
+        road = -1;
+        lane = -1;
+        
+        sleep(seconds_wait);
     }
     
     printf("End of manual run.");
@@ -36,7 +43,7 @@ void manual(Crossing* c) {
 }
 
 void display_help() {
-    printf("Help\n====================\n\n"
+    printf("Help\n====================\n"
             "Keys for lanes:\n--------------------\n"
             "1 :: Left\n"
             "2 :: Straight\n"
