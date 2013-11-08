@@ -15,12 +15,12 @@ typedef struct {
 
 CarSensor create_carsensor();
 
+void change_sensor_state(CarSensor* sensor, int state);
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
-
-
+    
 
 #ifdef	__cplusplus
 }

@@ -6,3 +6,7 @@ PushButton create_pushbutton(){
     
     return pushbutton;
 }
+
+void change_button_state(PushButton* btn, int state) {
+    btn->status = state;
+}

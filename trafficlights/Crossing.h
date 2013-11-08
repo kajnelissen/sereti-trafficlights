@@ -39,11 +39,18 @@ extern "C" {
         Orange5               
     } crossingState;
     
+//    static inline char *str_state(crossingState cs) {
+//        static const char *strings[] = { "K1", "K2", "K3", "K4", "K5", "K6", "Orange2", "Orange3", "Orange4", "Orange5" };
+//        return strings[cs];
+//    }
+    
     typedef struct {
         crossingState status;
         task* crossingController;	/*implementatie concurrent gedrag, actief object*/
         mailBox mailForCrossing;
         Road roads[4];
+        int seconds_green;
+        int seconds_orange;
     } Crossing;
 
     Crossing* crossing;
@@ -56,6 +63,12 @@ extern "C" {
     void print_state(Crossing* c);
     
     void sendEvent_crossing(Crossing* c, eventForCrossing e);
+    
+    void trigger_sensor(Crossing* c, int road, int lane);
+    void cancel_sensor(Crossing* c, int road, int lane);
+    
+    void trigger_crosswalk(Crossing* c, int road);
+    void cancel_crosswalk(Crossing* c, int road);
      
 #ifdef	__cplusplus
 }

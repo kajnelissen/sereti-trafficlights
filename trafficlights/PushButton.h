@@ -14,6 +14,8 @@ typedef struct{
 
 PushButton create_pushbutton();
 
+void change_button_state(PushButton* sensor, int state);
+
 #ifdef	__cplusplus
 extern "C" {
 #endif

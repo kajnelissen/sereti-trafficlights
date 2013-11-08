@@ -10,10 +10,11 @@
  * 
  * @param crossing
  */
-void simulate(Crossing* crossing) {
-    printf("Start simulatie...\n\n");
+void simulation(Crossing* crossing) {
+    printf("Starting simulation...\n\n");
     
     int key;
+    int seconds_wait = crossing->seconds_green + crossing->seconds_orange + 3;
     
     // hier iets dat auto's gaat triggeren bij willekeurige verkeerslichten
     // deze auto's triggeren het carsensor event dat bij dat verkeerslicht
@@ -22,87 +23,39 @@ void simulate(Crossing* crossing) {
     srand(time(NULL));
     
     while ( 1 ) {
-        
-        //print_state(crossing);
-        
         // break on pressing escape key (key code = 27))
         key = getch();
         if ( key == 27 ) {
             break;
         } else {
-//            int random = rand() % 10000;
-//            if ( random == 9999 ) {
-                car_arrival(crossing);
-//            }
+            int random = rand() % 10;
+            if ( random <= 7 ) {
+                sim_car(crossing);
+            } else {
+//                sim_pedestrian(crossing);
+            }
+            sleep(seconds_wait);
         }
     }
     
-    printf("Einde simulatie");
+    printf("End of simulation.");
 }
 
 /**
  * Triggers a car sensor in one of the lanes of a road.
  * @param crossing
  */
-void car_arrival(Crossing* crossing) {
-    
-//    struct Road r = get_road(crossing, 1);
-//    struct Road* r;
-//    r = (struct Road*) calloc(1, sizeof r );
-//    r = get_road(crossing, 1);
-    
-    sleep(2);
-    
-    printf("Sensor merkt auto op!\n");
-    
-    int random = rand() % 8;
-    switch (random) {
-        case 0:
-            printf("Event #1.\n");
-            sendEvent_crossing(crossing, Event1);
-            sendEvent_crossing(crossing, Event2);
-            break;
-        case 1:
-            /*printf("Event #2.\n");
-            sendEvent_crossing(crossing, Event2);*/
-            break;    
-        case 2:
-            printf("Event #3.\n");
-            sendEvent_crossing(crossing, Event3);
-            sendEvent_crossing(crossing, Event4);
-            sendEvent_crossing(crossing, Event5);
-            break;
-        case 3:
-            /*printf("Event #4.\n");
-            sendEvent_crossing(crossing, Event4);*/
-            break;
-        case 4:
-            /*printf("Event #5.\n");
-            sendEvent_crossing(crossing, Event5);*/
-            break;
-        case 5:
-            printf("Event #6.\n");
-            sendEvent_crossing(crossing, Event6);
-            sendEvent_crossing(crossing, Event4);
-            sendEvent_crossing(crossing, Event5);
-            break;
-        case 6:
-            printf("Event #7.\n");
-            sendEvent_crossing(crossing, Event7);
-            sendEvent_crossing(crossing, Event4);
-            sendEvent_crossing(crossing, Event5);
-            break;
-        case 7:
-            printf("Event #8.\n");
-            sendEvent_crossing(crossing, Event8);
-            sendEvent_crossing(crossing, Event4);
-            sendEvent_crossing(crossing, Event5);
-            break;
-        default:
-            printf("Geen actie.\n");
-            break;
-    }
-    
-    
-    
+void sim_car(Crossing* crossing) {    
+    int road = rand() % 4;
+    int lane = rand() % 3;
+    trigger_sensor(crossing, road, lane);
+}
+
+/**
+ * Triggers a push button on one of the crosswalks.
+ * @param crossing
+ */
+void sim_pedestrian(Crossing* crossing) {
+    int road = rand() % 4;
+    trigger_crosswalk(crossing, road);
 }

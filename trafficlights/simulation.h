@@ -18,9 +18,11 @@ extern "C" {
 #endif
 
 
-    void simulate(Crossing* c);
+    void simulation(Crossing* c);
     
-    void car_arrival(Crossing* );
+    void sim_car(Crossing* c);
+    
+    void sim_pedestrian(Crossing *c);
 
 
 #ifdef	__cplusplus

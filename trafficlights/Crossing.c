@@ -1,43 +1,46 @@
-#include "Crossing.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Crossing.h"
 #include "ntk.h"
 #include "Light.h"
+#include "CarSensor.h"
+#include "PushButton.h"
 
 
 /*Crossing Actions*/
 
 /**/
-static void lightsAction1(Crossing *crossing){
+static void lightsAction1(Crossing *crossing) {
     int i;
-    for(i = 0; i < 4; i++){
-        int j;
-        for(j = 0; j < 2; j++){
+    int j;
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 2; j++) {
             crossing->roads[i].crosswalk.pedestrianlight[j].light = GREEN;
         }
     }
     
     print_state(crossing);
     
-    sleep(15);
+    sleep(crossing->seconds_green);
 }
 
-static void lightsAction2(Crossing *crossing){
+static void lightsAction2(Crossing *crossing) {
     int i;
-    for(i = 0; i < 4; i++){
-        int j;
-        for(j = 0; j < 2; j++){
+    int j;
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 2; j++) {
             crossing->roads[i].crosswalk.pedestrianlight[j].light = RED;
         }
     }
     print_state(crossing);
-    sleep(2);
+    sleep(crossing->seconds_orange);
+//    sleep(2);
 }
 
 //0 = links
 //1 = rechtdoor
 //2 = rechts
-static void lightsAction3(Crossing *crossing){
+static void lightsAction3(Crossing *crossing) {
     //Road 1
     crossing->roads[0].lanes[1].trafficlight.light = GREEN;
     crossing->roads[0].lanes[2].trafficlight.light = GREEN;
@@ -46,19 +49,19 @@ static void lightsAction3(Crossing *crossing){
     crossing->roads[2].lanes[2].trafficlight.light = GREEN;
     
     print_state(crossing);
-    sleep(15);
+    sleep(crossing->seconds_green);
 }
 
 
-static void lightsAction4(Crossing *crossing){
+static void lightsAction4(Crossing *crossing) {
     int i;
     int j;
     
-    for(i = 0; i < 4; i++)
+    for (i = 0; i < 4; i++)
     {
-        for(j = 0; j < 3; j++)
+        for (j = 0; j < 3; j++)
         {
-            if(crossing->roads[i].lanes[j].trafficlight.light == GREEN)
+            if (crossing->roads[i].lanes[j].trafficlight.light == GREEN)
             {
                 crossing->roads[i].lanes[j].trafficlight.light = ORANGE;
             }
@@ -66,18 +69,18 @@ static void lightsAction4(Crossing *crossing){
     }
     
     print_state(crossing);
-    sleep(3);
+    sleep(crossing->seconds_orange);
 }
 
-static void lightsAction5(Crossing *crossing){
+static void lightsAction5(Crossing *crossing) {
     int i;
     int j;
     
-    for(i = 0; i < 4; i++)
+    for (i = 0; i < 4; i++)
     {
-        for(j = 0; j < 3; j++)
+        for (j = 0; j < 3; j++)
         {
-              if(crossing->roads[i].lanes[j].trafficlight.light == ORANGE)
+            if (crossing->roads[i].lanes[j].trafficlight.light == ORANGE)
             {
                 crossing->roads[i].lanes[j].trafficlight.light = RED;
             }
@@ -85,10 +88,10 @@ static void lightsAction5(Crossing *crossing){
     }
     
     print_state(crossing);
-    sleep(2);
+//    sleep(2);
 }
 
-static void lightsAction6(Crossing *crossing){
+static void lightsAction6(Crossing *crossing) {
      //Road 2
     crossing->roads[1].lanes[1].trafficlight.light = GREEN;
     crossing->roads[1].lanes[2].trafficlight.light = GREEN;
@@ -97,98 +100,98 @@ static void lightsAction6(Crossing *crossing){
     crossing->roads[3].lanes[2].trafficlight.light = GREEN;
     
     print_state(crossing);
-    sleep(15);
+    sleep(crossing->seconds_green);
 }
 
-static void lightsAction7(Crossing *crossing){
+static void lightsAction7(Crossing *crossing) {
      //Road 1
     crossing->roads[0].lanes[0].trafficlight.light = GREEN;
     //Road 3
     crossing->roads[2].lanes[0].trafficlight.light = GREEN;
     
     print_state(crossing);
-    sleep(15);
+    sleep(crossing->seconds_green);
 }
 
-static void lightsAction8(Crossing *crossing){
+static void lightsAction8(Crossing *crossing) {
      //Road 2
     crossing->roads[1].lanes[0].trafficlight.light = GREEN;
     //Road 4
     crossing->roads[3].lanes[0].trafficlight.light = GREEN;
     
     print_state(crossing);
-    sleep(15);
+    sleep(crossing->seconds_green);
 }
 
 /*Voetgangers groen*/
-static void action1(void* v){
+static void action1(void* v) {
     Crossing* crossing = (Crossing*) v;
     crossing->status = K1;
     lightsAction1(crossing);
 }
 
 /*Voetgangers rood - na bepaalde tijd*/
-static void action2(void* v){
+static void action2(void* v) {
     Crossing* crossing = (Crossing*) v;
     crossing->status = K6;
     lightsAction2(crossing);
 }
 
 /*Weg 1 en 3 rechtdoor en rechtsaf groen*/
-static void action3(void* v){
+static void action3(void* v) {
     Crossing* crossing = (Crossing*) v;
     crossing->status = K2;
     lightsAction3(crossing);
 }
 
 /*Alle groene lichten naar oranje*/
-static void action4(void* v){
+static void action4(void* v) {
     Crossing* crossing = (Crossing*) v;
     lightsAction4(crossing);
 }
 
 /*Alle oranje lichten naar rood*/
-static void action5(void* v){
+static void action5(void* v) {
     Crossing* crossing = (Crossing*) v;
     lightsAction5(crossing);
 }
 
 /*Weg 2 en 4 rechtdoor en rechtsaf groen*/
-static void action6(void* v){
+static void action6(void* v) {
     Crossing* crossing = (Crossing*) v;
     crossing->status = K3;
     lightsAction6(crossing);
 }
 
 /*Weg 1 en 3 linksaf groen*/
-static void action7(void* v){
+static void action7(void* v) {
     Crossing* crossing = (Crossing*) v;
     crossing->status = K4;
     lightsAction7(crossing);
 }
 
 /*Weg 2 en 4 linksaf groen*/
-static void action8(void* v){
+static void action8(void* v) {
     Crossing* crossing = (Crossing*) v;
     crossing->status = K5;
     lightsAction8(crossing);
 }
 
 /*Alles lichten rood*/
-static void defaultAction(void* v){
+static void defaultAction(void* v) {
     Crossing* crossing = (Crossing*) v;
     crossing->status = K6;
 }
 
 //Taak voor het vat object
-static unsigned __stdcall crossingTask(void* arg){
+static unsigned __stdcall crossingTask(void* arg) {
 	task* t = (task*)arg;
 	Crossing* c = *((Crossing**)(getArgument_task(t)));
 	eventForCrossing e;
 	actionType a;
 
 	//Zolang het vat nog bestaat, zal deze taak actief blijven
-	while(!isTerminated_task(t)){
+	while (!isTerminated_task(t)) {
 		//Wacht tot er een gebeurtenis (event) plaats heeft gevonden, mbv een mailbox
 		get_mailBox(&(c->mailForCrossing), &e);
 
@@ -206,11 +209,8 @@ static unsigned __stdcall crossingTask(void* arg){
 
 //void crossing_init(int countRoads){
 void crossing_init(Crossing* c, int countRoads){
-        //struct Crossing *ptr;
-//        crossing = (struct Crossing *) calloc(1, sizeof crossing );
-//        c = (struct Crossing *) calloc(1, sizeof c );
         
-        if(crossing_STD == NULL){
+        if (crossing_STD == NULL) {
             crossing_STD = (STD*)malloc(sizeof(STD));
             
             //create_STD(<VERWIJZING NAAR STD>, <AANTAL TOESTANDEN>, 
@@ -237,19 +237,13 @@ void crossing_init(Crossing* c, int countRoads){
         }
         
         //Mailbox aanmaken, waar 16 berichten in passen
-//	create_mailBox(&(crossing->mailForCrossing),16,sizeof(eventForCrossing));
         create_mailBox(&(c->mailForCrossing), 16, sizeof(eventForCrossing));
         
         //Crossing in beginstatus brengen
-//	ptr->status=K6;
         c->status = K6;
         
-        //Taak creeren en starten voor het vat
-//	ptr->vatController=(task*)malloc(sizeof(task));
-//	create_task(ptr->crossingController,vatTask,&v,sizeof(vat*),0);
-        
         int i;
-        for(i = 0; i < countRoads; i++){
+        for (i = 0; i < countRoads; i++) {
             add_road(c, i);
         }
         
@@ -258,12 +252,13 @@ void crossing_init(Crossing* c, int countRoads){
 	create_task(c->crossingController, crossingTask, &c, sizeof(Crossing*), 0);
     } 
         
-void add_road(Crossing* c, int i){
+void add_road(Crossing* c, int i) {
     c->roads[i] = create_road();
 }
 
 void print_state(Crossing* c) {
-    printf("------------------------------\nToestand = ((%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c))\n------------------------------\n", 
+    printf("> Toestand = [%d] = ((%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c))\n", 
+            c->status,
             str_light(c->roads[0].crosswalk.pedestrianlight[0].light),
             str_light(c->roads[0].lanes[0].trafficlight.light),
             str_light(c->roads[0].lanes[1].trafficlight.light),
@@ -285,5 +280,56 @@ void print_state(Crossing* c) {
 
 //Functie om een gebeurtenis (event) te sturen naar het vat
 void sendEvent_crossing(Crossing* c, eventForCrossing e){
-	put_mailBox(&(c->mailForCrossing), &e);
+    put_mailBox(&(c->mailForCrossing), &e);
+}
+
+void trigger_sensor(Crossing* crossing, int road, int lane) {
+    change_sensor_state(&(crossing->roads[road].lanes[lane].carsensor), 1);
+    printf("\nA car triggered the sensor in lane %d of road %d!\n", lane + 1, road + 1);
+    
+    if ( (road == 0 && lane == 1) || (road == 0 && lane == 2) || (road == 2 && lane == 1) || (road == 2 && lane == 2) ) {
+        // change state to K2
+        sendEvent_crossing(crossing, Event3);
+        sendEvent_crossing(crossing, Event4);
+        sendEvent_crossing(crossing, Event5);
+    }
+    
+    if ( (road == 1 && lane == 1) || (road == 1 && lane == 2) || (road == 3 && lane == 1) || (road == 3 && lane == 2) ) {
+        // change state to K3
+        sendEvent_crossing(crossing, Event6);
+        sendEvent_crossing(crossing, Event4);
+        sendEvent_crossing(crossing, Event5);
+    }
+    
+    if ( (road == 0 && lane == 0) || (road == 2 && lane == 0) ) {
+        // change state to K4
+        sendEvent_crossing(crossing, Event7);
+        sendEvent_crossing(crossing, Event4);
+        sendEvent_crossing(crossing, Event5);
+    }
+    
+    if ( (road == 1 && lane == 0) || (road == 3 && lane == 0) ) {
+        // change state to K5
+        sendEvent_crossing(crossing, Event8);
+        sendEvent_crossing(crossing, Event4);
+        sendEvent_crossing(crossing, Event5);
+    }
+}
+
+void cancel_sensor(Crossing* crossing, int road, int lane) {
+    change_sensor_state(&(crossing->roads[road].lanes[lane].carsensor), 0);
+}
+
+void trigger_crosswalk(Crossing* c, int road) {
+    change_button_state(&(crossing->roads[road].crosswalk.pedestrianlight[0].pushbutton), 1);
+    change_button_state(&(crossing->roads[road].crosswalk.pedestrianlight[1].pushbutton), 1);
+    printf("\nA pedestrian pressed the push button on road %d!\n", road + 1);
+    
+    sendEvent_crossing(crossing, Event1);
+    sendEvent_crossing(crossing, Event2);
+}
+
+void cancel_crosswalk(Crossing* c, int road) {
+    change_button_state(&(crossing->roads[road].crosswalk.pedestrianlight[0].pushbutton), 0);
+    change_button_state(&(crossing->roads[road].crosswalk.pedestrianlight[1].pushbutton), 0);
 }

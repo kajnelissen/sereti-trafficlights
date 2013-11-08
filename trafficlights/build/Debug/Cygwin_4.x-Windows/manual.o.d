@@ -1,6 +1,6 @@
-build/Debug/Cygwin_4.x-Windows/main.o: main.c Crossing.h Road.h \
+build/Debug/Cygwin_4.x-Windows/manual.o: manual.c Crossing.h Road.h \
  Crosswalk.h PedestrianLight.h PushButton.h Light.h Lane.h CarSensor.h \
- TrafficLight.h ntk.h simulation.h manual.h
+ TrafficLight.h ntk.h manual.h
 
 Crossing.h:
 
@@ -21,7 +21,5 @@ CarSensor.h:
 TrafficLight.h:
 
 ntk.h:
-
-simulation.h:
 
 manual.h:
