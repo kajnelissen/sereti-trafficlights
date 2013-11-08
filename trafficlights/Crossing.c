@@ -257,7 +257,7 @@ void add_road(Crossing* c, int i) {
 }
 
 void print_state(Crossing* c) {
-    printf("> Toestand = [%d] = ((%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c))\n", 
+    printf("\t> State = [%d] = ((%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c),(%c, %c, %c, %c))\n", 
             c->status,
             str_light(c->roads[0].crosswalk.pedestrianlight[0].light),
             str_light(c->roads[0].lanes[0].trafficlight.light),
@@ -320,7 +320,7 @@ void cancel_sensor(Crossing* crossing, int road, int lane) {
     change_sensor_state(&(crossing->roads[road].lanes[lane].carsensor), 0);
 }
 
-void trigger_crosswalk(Crossing* c, int road) {
+void trigger_crosswalk(Crossing* crossing, int road) {
     change_button_state(&(crossing->roads[road].crosswalk.pedestrianlight[0].pushbutton), 1);
     change_button_state(&(crossing->roads[road].crosswalk.pedestrianlight[1].pushbutton), 1);
     printf("\nA pedestrian pressed the push button on road %d!\n", road + 1);
@@ -329,7 +329,7 @@ void trigger_crosswalk(Crossing* c, int road) {
     sendEvent_crossing(crossing, Event2);
 }
 
-void cancel_crosswalk(Crossing* c, int road) {
+void cancel_crosswalk(Crossing* crossing, int road) {
     change_button_state(&(crossing->roads[road].crosswalk.pedestrianlight[0].pushbutton), 0);
     change_button_state(&(crossing->roads[road].crosswalk.pedestrianlight[1].pushbutton), 0);
 }

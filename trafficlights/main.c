@@ -54,10 +54,10 @@ int main(int argc, char** argv) {
  */
 void run(Crossing* c, int mode) {
     if ( mode == 0 ) {
-        printf("Simulated run was selected!\n");
+        printf("\nSimulated run was selected!\n");
         simulation(c);
     } else {
-        printf("Manual run was selected!\n");
+        printf("\nManual run was selected!\n");
         manual(c);
     }
 }

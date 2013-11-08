@@ -11,7 +11,7 @@
  * @param crossing
  */
 void simulation(Crossing* crossing) {
-    printf("Starting simulation...\n\n");
+    printf("\nStarting simulation...\n\n");
     
     int key;
     int seconds_wait = crossing->seconds_green + crossing->seconds_orange + 3;
@@ -24,18 +24,18 @@ void simulation(Crossing* crossing) {
     
     while ( 1 ) {
         // break on pressing escape key (key code = 27))
-        key = getch();
-        if ( key == 27 ) {
-            break;
-        } else {
+//        key = getch();
+//        if ( key == 27 ) {
+//            break;
+//        } else {
             int random = rand() % 10;
-            if ( random <= 7 ) {
+            if ( random <= 6 ) {
                 sim_car(crossing);
             } else {
-//                sim_pedestrian(crossing);
+                sim_pedestrian(crossing);
             }
             sleep(seconds_wait);
-        }
+//        }
     }
     
     printf("End of simulation.");
